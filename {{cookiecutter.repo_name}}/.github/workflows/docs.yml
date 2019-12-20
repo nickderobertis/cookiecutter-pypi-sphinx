@@ -1,3 +1,4 @@
+{% raw %}
 name: Build and Push Docs
 
 on:
@@ -91,3 +92,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.gh_token }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: ./docs
+{% endraw %}

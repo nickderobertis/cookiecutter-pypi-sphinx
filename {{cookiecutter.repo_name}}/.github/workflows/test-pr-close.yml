@@ -1,3 +1,4 @@
+{% raw %}
 name: Test PR Context
 
 on:
@@ -25,3 +26,4 @@ jobs:
         exit 1;
       env:
         GITHUB_PR_MERGED: ${{ github.event.pull_request.merged }}
+{% endraw %}
