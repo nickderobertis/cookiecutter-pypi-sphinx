@@ -26,15 +26,16 @@ the following features:
 
 ## Getting Started
 
-### Create Project from Cookiecutter
+### Create Project from Cookiecutter using Cruft
 
-Install the latest Cookiecutter if you haven't installed it yet:
+Install [cruft](https://github.com/timothycrosley/cruft) 
+if you haven't installed it yet:
 
-    pip install -U cookiecutter
+    pip install cruft
 
 Generate a Python package project:
 
-    cookiecutter https://github.com/whoopnip/cookiecutter-pypi-sphinx.git
+    cruft create https://github.com/whoopnip/cookiecutter-pypi-sphinx
 
 ### Create git repo
 
