@@ -47,7 +47,7 @@ jobs:
         env:
           PR_WAS_MERGED: ${{ steps.automerge.outputs.merged }}
 
-  # TODO: refactor auto-merge workflow once Github Actions improves
+  # TODO [$5dfce3ece3afb90007e9f662]: refactor auto-merge workflow once Github Actions improves
   #
   # Entire jobs are getting copied between workflow files due to limitations in Github Actions.
   # The only difference in these jobs is that they checkout master instead of requiring master
