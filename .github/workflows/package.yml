@@ -1,4 +1,4 @@
-name: Test, Build and Push Python Package and Docs
+name: Collect TODO and Update Release Draft
 
 on:
   push: {}
