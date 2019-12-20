@@ -1,0 +1,62 @@
+name: Test, Build and Push Python Package and Docs
+
+on:
+  push: {}
+  pull_request:
+    types: [closed]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.7]
+
+    steps:
+    - name: Exit Workflow if PR but not Merged
+      if: github.event.action == 'closed'
+      run: |
+        if [ !$GITHUB_PR_BASE == 'master' ]; then
+          echo "Not merging into master, exiting workflow";
+          exit 1;
+        fi;
+        if $GITHUB_PR_MERGED; then
+          echo "PR merged, can continue workflow"
+          exit 0;
+        fi;
+        echo "Got closed PR, not merged, exiting workflow";
+        exit 1;
+      env:
+        GITHUB_PR_MERGED: ${{ github.event.pull_request.merged }}
+        GITHUB_PR_BASE: ${{ github.event.pull_request.base.ref }}
+
+
+  collectTODO:
+    if: github.ref == 'refs/heads/master'
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.7]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Collect TODO
+        uses: whoopnip/todo-actions@input-commit-branch
+        with:
+          commitBranch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.gh_token }}
+          TODO_ACTIONS_MONGO_URL: ${{ secrets.TODO_ACTIONS_MONGO_URL }}
+
+
+  updateReleaseDraft:
+    if: github.ref == 'refs/heads/master'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: toolmantim/release-drafter@v5.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.gh_token }}
+
