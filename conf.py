@@ -2,13 +2,13 @@
 # Sphinx configuration is in the docsrc folder
 
 # Main package name
-PACKAGE_NAME = 'py_qs_example'
+PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 
 # Name of Repo
-REPO_NAME = 'pypi-sphinx-quickstart'
+REPO_NAME = "{{ cookiecutter.repo_name }}"
 
 # Github username of the user which owns the repo
-REPO_USERNAME = 'whoopnip'
+REPO_USERNAME = "{{ cookiecutter.repo_username }}"
 
 # List of maintainers of package, by default the same user which owns the repo
 # Pull requests raised by these maintainers without the "no auto merge" label will be automatically merged
@@ -17,10 +17,10 @@ REPO_MAINTAINERS = [
 ]
 
 # Package version in the format (major, minor, release)
-PACKAGE_VERSION_TUPLE = (0, 1, 19)
+PACKAGE_VERSION_TUPLE = (0, 1, 0)
 
 # Short description of the package
-PACKAGE_SHORT_DESCRIPTION = 'Python package PyPi Sphinx quickstart example app'
+PACKAGE_SHORT_DESCRIPTION = "{{ cookiecutter.short_description }}"
 
 # Long description of the package for PyPI
 # Set to 'auto' to use README.md as the PyPI description
@@ -28,10 +28,10 @@ PACKAGE_SHORT_DESCRIPTION = 'Python package PyPi Sphinx quickstart example app'
 PACKAGE_DESCRIPTION = 'auto'
 
 # Author
-PACKAGE_AUTHOR = "Nick DeRobertis"
+PACKAGE_AUTHOR = "{{ cookiecutter.package_author }}"
 
 # Author email
-PACKAGE_AUTHOR_EMAIL = 'mail@example.com'
+PACKAGE_AUTHOR_EMAIL = "{{ cookiecutter.author_email }}"
 
 # Name of license for package
 PACKAGE_LICENSE = 'MIT'
@@ -65,7 +65,7 @@ PACKAGE_INSTALL_REQUIRES = [
 # Keys should be name of the optional feature and values are lists of required packages
 # E.g. {'feature1': ['pandas', 'numpy'], 'feature2': ['matplotlib']}
 OPTIONAL_PACKAGE_INSTALL_REQUIRES = {
-    'plot': ['matplotlib']
+
 }
 
 # Packages added to Binder environment so that examples can be executed in Binder
@@ -101,7 +101,7 @@ SCRIPTS = []
 # Optional Google Analytics tracking ID for documentation
 # Go to https://analytics.google.com/ and set it up for your documentation URL
 # Set to None or empty string to not use this
-GOOGLE_ANALYTICS_TRACKING_ID = 'UA-153687598-1'
+GOOGLE_ANALYTICS_TRACKING_ID = "{{ cookiecutter.google_analytics_id }}"
 
 PACKAGE_URLS = {
     'Code': f'https://github.com/{REPO_USERNAME}/{REPO_NAME}',

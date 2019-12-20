@@ -1,4 +1,4 @@
-Getting started with py_qs_example
+Getting started with {{ cookiecutter.package_name }}
 **********************************
 
 Install
@@ -6,22 +6,15 @@ Install
 
 Install via::
 
-    pip install py_qs_example
+    pip install {{ cookiecutter.package_name }}
 
 Usage
 =========
 
-Some highlighted functionality from my module. Check it out.
+Some highlighted functionality.
 
 This is a simple example::
 
-    import py_qs_example
-
-    obj = py_qs_example.mymodule.ExampleClass(5, int)
-    print('done')
+    import {{ cookiecutter.package_name }}
 
 
-Parameter Links Example
-========================
-
-Here is an example of a parameter link: :paramref:`.ExampleClass.num`.
