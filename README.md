@@ -21,6 +21,9 @@ the following features:
         - Auto-converts Jupyter notebooks in `nbexamples`
 - Auto-merges pull requests by maintainers
 - Auto-drafts release notes based on merged pull requests
+- Syncs new changes from the cookiecutter template using `cruft`
+on a cron workflow. Creates a PR with the changes to be merged
+manually.
 - Collects TODO comments and converts them into issues (optional)
 - Closes TODO issues once comments are removed (optional)
 
@@ -122,6 +125,9 @@ repo settings:
 - `no auto merge`: added to prevent automatic merging of 
 pull requests by maintainers
 - `maintenance`: one of the output categories for release notes
+- `automated pr`: Used by automated template update cron workflow which
+uses `cruft` to check for changes in the template and opens a PR
+automatically if so.
 
 #### Set Master to Protected Branch
 
@@ -214,6 +220,23 @@ Navigate to the repo base folder and run:
 ```
 pipenv run python upload.py
 ```
+
+### Updating Build Requirements
+
+The Github Actions CI/CD uses `Pipfile.lock` to install its 
+requirements. Run `pipenv update` locally to update the 
+`Pipfile.lock` with the newest dependencies and push into
+the `master` branch to get the dependencies updated
+on the CI/CD system.
+
+### Syncing with the `cookiecutter` template
+
+There is a built-in workflow which runs daily to check for
+updates in the `cookiecutter` template. If it finds an update,
+it will use `cruft` to apply the update and raise a PR with the
+changes. Manually review the changes, adjusting if needed, then
+merge the PR to keep updated with the template.
+
 
 ## Links
 
