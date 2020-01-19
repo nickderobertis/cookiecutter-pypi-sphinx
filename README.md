@@ -23,7 +23,8 @@ the following features:
 - Auto-drafts release notes based on merged pull requests
 - Syncs new changes from the cookiecutter template using `cruft`
 on a cron workflow. Creates a PR with the changes to be merged
-manually.
+manually. Creates an issue if it is not possible to commit the changes (when there are
+changes to workflow files).
 - Collects TODO comments and converts them into issues (optional)
 - Closes TODO issues once comments are removed (optional)
 
@@ -128,6 +129,10 @@ pull requests by maintainers
 - `automated pr`: Used by automated template update cron workflow which
 uses `cruft` to check for changes in the template and opens a PR
 automatically if so.
+- `automated issue`: Due to limitations in Github Actions, the template update 
+cron workflow is not able to commit to the repo if the changes include changes to
+workflow files. It instead raises an issue to update the template in this case. This
+label is applied to these issues as well as the `maintenance` label. 
 
 #### Set Master to Protected Branch
 
