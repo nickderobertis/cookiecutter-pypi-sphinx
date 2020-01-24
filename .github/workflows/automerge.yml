@@ -31,7 +31,7 @@ jobs:
       - name: Auto-merge PR
         id: automerge
         if: success()
-        uses: "whoopnip/automerge-action@merged-to-use-temporarily"
+        uses: "nickderobertis/automerge-action@merged-to-use-temporarily"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: "!no auto merge"
@@ -69,7 +69,7 @@ jobs:
         with:
           ref: refs/heads/master
       - name: Collect TODO
-        uses: whoopnip/todo-actions@input-commit-branch
+        uses: nickderobertis/todo-actions@input-commit-branch
         with:
           commitBranch: master
         env:

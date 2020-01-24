@@ -17,7 +17,7 @@ by another workflow.
 Run \`pipenv run cruft update -s\` then manually review and update the changes, before pushing a PR
 for this.
 
-[1]: https://github.com/whoopnip/cookiecutter-pypi-sphinx
+[1]: https://github.com/nickderobertis/cookiecutter-pypi-sphinx
 
 EOF
 else

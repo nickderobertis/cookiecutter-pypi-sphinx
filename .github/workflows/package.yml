@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Collect TODO
-        uses: whoopnip/todo-actions@input-commit-branch
+        uses: nickderobertis/todo-actions@input-commit-branch
         with:
           commitBranch: master
         env:

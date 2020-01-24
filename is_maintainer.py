@@ -4,7 +4,7 @@ Script to check within Github Actions whether current actor is one of the packag
 import os
 
 REPO_MAINTAINERS = [
-    'whoopnip'
+    'nickderobertis'
 ]
 
 if __name__ == '__main__':

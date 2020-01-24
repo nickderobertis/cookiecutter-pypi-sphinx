@@ -2,7 +2,7 @@
   "package_name": "py_qs_example",
   "full_name": "Quick Start Example",
   "repo_name": "pypi-sphinx-quickstart",
-  "repo_username": "whoopnip",
+  "repo_username": "nickderobertis",
   "short_description": "Python package PyPi Sphinx quickstart example app",
   "package_author": "Nick DeRobertis",
   "author_email": "whoopnip@gmail.com",

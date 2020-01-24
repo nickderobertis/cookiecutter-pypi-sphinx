@@ -46,7 +46,7 @@ jobs:
       if: steps.template_check.outputs.template_update == 'true'
       run: bash scripts/workflows-updated.sh
     - name: Check if Issue Exists
-      uses: whoopnip/check-if-issue-exists-action@master
+      uses: nickderobertis/check-if-issue-exists-action@master
       id: check_if_issue_exists
       with: {% endraw %}
         repo: {{ cookiecutter.repo_username }}/{{ cookiecutter.repo_name }} {% raw %}
@@ -78,7 +78,7 @@ jobs:
 
           - Updates coming from [cookiecutter-pypi-sphinx][1]
 
-          [1]: https://github.com/whoopnip/cookiecutter-pypi-sphinx
+          [1]: https://github.com/nickderobertis/cookiecutter-pypi-sphinx
         labels: no auto merge, automated pr
         branch: template-patches
 {% endraw %}

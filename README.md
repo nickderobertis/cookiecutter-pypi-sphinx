@@ -5,7 +5,7 @@
 
 This repo is a template to use for starting a new Python package
 which is hosted on PyPi and uses Sphinx for documentation
-hosted on Github pages. It has a built-in CI/CD system using Github Actions. 
+hosted on Github pages. It has a built-in CI/CD system using Github Actions.
 for features and setup. The CI system has
 the following features:
 - Runs any tests in `tests` with `pytest`
@@ -32,14 +32,14 @@ changes to workflow files).
 
 ### Create Project from Cookiecutter using Cruft
 
-Install [cruft](https://github.com/timothycrosley/cruft) 
+Install [cruft](https://github.com/timothycrosley/cruft)
 if you haven't installed it yet:
 
     pip install cruft
 
 Generate a Python package project:
 
-    cruft create https://github.com/whoopnip/cookiecutter-pypi-sphinx
+    cruft create https://github.com/nickderobertis/cookiecutter-pypi-sphinx
 
 ### Create git repo
 
@@ -50,20 +50,20 @@ Create the git repo and push to Github.
 Go into the repo settings, under Secrets, and add the following secrets:
 - `pypi_password`: Personal token for PyPI
 - `gh_token`: Github personal access token
-- `CODECOV_TOKEN` (optional): [codecov.io](https://codecov.io) token for this project  
+- `CODECOV_TOKEN` (optional): [codecov.io](https://codecov.io) token for this project
 - `TODO_ACTIONS_MONGO_URL` (optional): MongoDB connection url, complete with
 username and password. See [Setup MongoDB](#setup-mongodb-optional-for-todo-integration).
 
 ### `conf.py`
 
-Edit `conf.py` in the main repo directory. This contains the main 
-settings for the PyPi package. Fill out each setting with the 
+Edit `conf.py` in the main repo directory. This contains the main
+settings for the PyPi package. Fill out each setting with the
 details about your package.
 
 ### Adding Project Source
 
 Delete the folder `py_qs_example`, and add your own package
-with the name you set in `conf.PACKAGE_NAME`. 
+with the name you set in `conf.PACKAGE_NAME`.
 
 ### Adding Global Requirements to Build
 
@@ -83,7 +83,7 @@ Edit `docsrc/Makefile` to change `SPHINXPROJ` to set it to the name
 you set in `conf.PACKAGE_NAME`.
 
 Edit `docsrc/source/index.rst` to remove the example included files. Replace
-with your own if you wish or entirely delete the My Module and 
+with your own if you wish or entirely delete the My Module and
 My Package sections if don't wish to use the autosummary directive.
 
 Edit `docsrc/source/tutorial.rst` to put your own tutorial, or remove it
@@ -93,9 +93,9 @@ You may further modify Sphinx configuration in `docsrc/source/conf.py`
 if you wish.
 
 Add [Sphinx Gallery](https://sphinx-gallery.github.io/stable/index.html) examples
-in the `examples` folder. You can also add Jupyter notebook examples in the 
-`nbexamples` folder, and they will automatically be converted to 
-Sphinx Gallery-style examples and included with `examples` in the 
+in the `examples` folder. You can also add Jupyter notebook examples in the
+`nbexamples` folder, and they will automatically be converted to
+Sphinx Gallery-style examples and included with `examples` in the
 build of the documentation.
 
 ### Commit and Push
@@ -106,14 +106,14 @@ a `gh-pages` branch which has the documentation HTML in it.
 
 ### Github Pages Setup
 
-Go to repo settings, Github Pages section. For the Source dropdown, 
+Go to repo settings, Github Pages section. For the Source dropdown,
 select "gh-pages branch". The settings page should reload,
-and in the Github Pages section it should show the URL of your 
+and in the Github Pages section it should show the URL of your
 documentation. You should be able to see the documentation at the URL
 after a few seconds, but it will still be the example documentation.
 
-If "gh-pages branch" is not shown in the dropdown, you need to make one 
-release commit and push it, so that the `gh-pages` branch will be added 
+If "gh-pages branch" is not shown in the dropdown, you need to make one
+release commit and push it, so that the `gh-pages` branch will be added
 to your repo. After doing that, you can go into the repo settings
 and select "gh-pages branch" as described.
 
@@ -123,25 +123,25 @@ and select "gh-pages branch" as described.
 
 The following labels are used in the CI/CD. They should be added in Labels in the
 repo settings:
-- `no auto merge`: added to prevent automatic merging of 
+- `no auto merge`: added to prevent automatic merging of
 pull requests by maintainers
 - `maintenance`: one of the output categories for release notes
 - `automated pr`: Used by automated template update cron workflow which
 uses `cruft` to check for changes in the template and opens a PR
 automatically if so.
-- `automated issue`: Due to limitations in Github Actions, the template update 
+- `automated issue`: Due to limitations in Github Actions, the template update
 cron workflow is not able to commit to the repo if the changes include changes to
 workflow files. It instead raises an issue to update the template in this case. This
-label is applied to these issues as well as the `maintenance` label. 
+label is applied to these issues as well as the `maintenance` label.
 
 #### Set Master to Protected Branch
 
 It is recommended to make master a protected branch so that nobody can
-delete it. 
+delete it.
 
 #### Setup Codecov
 
-Go to [codecov.io](https://codecov.io), log in via Github, click Repositories then 
+Go to [codecov.io](https://codecov.io), log in via Github, click Repositories then
 "Add new repository" and select this repository from the list. Copy the
 token for Codecov to use in the next step.
 
@@ -150,7 +150,7 @@ token for Codecov to use in the next step.
 For the TODO integration to work, you need a MongoDB instance. You can
 get one for free at [mlab.com](https://mlab.com). After creating the database,
 create a database user. The MLab interface will show you the format
-of the connection url string, which you will fill in the database user's 
+of the connection url string, which you will fill in the database user's
 username and password and use that as the `TODO_ACTIONS_MONGO_URL` secret,
 as the [Adding Secrets](#adding-secrets) section shows.
 
@@ -170,19 +170,19 @@ If the branch is the `master` branch, then it will also:
 
 #### If there is a change in `docsrc`
 
-If the branch is the master branch, and there was a change in `docsrc`, it will do 
+If the branch is the master branch, and there was a change in `docsrc`, it will do
 all the steps in On Every Push and When Branch is `master`, then it will:
 - Build documentation HTML using Sphinx
 - Create `gh-pages` branch and copy HTML there
-- Push to `gh-pages` branch, which will update the hosted documentation 
+- Push to `gh-pages` branch, which will update the hosted documentation
 
 #### If there is a change in the package version
 If the branch is the master branch, and there was a change in the package version
-in `conf.py`, it will do 
+in `conf.py`, it will do
 all the steps in On Every Push and When Branch is `master`, then it will:
 - Build documentation HTML using Sphinx
 - Create `gh-pages` branch and copy HTML there
-- Push to `gh-pages` branch, which will update the hosted documentation 
+- Push to `gh-pages` branch, which will update the hosted documentation
 - Build Python package
 - Upload Python package to PyPI
 
@@ -228,8 +228,8 @@ pipenv run python upload.py
 
 ### Updating Build Requirements
 
-The Github Actions CI/CD uses `Pipfile.lock` to install its 
-requirements. Run `pipenv update` locally to update the 
+The Github Actions CI/CD uses `Pipfile.lock` to install its
+requirements. Run `pipenv update` locally to update the
 `Pipfile.lock` with the newest dependencies and push into
 the `master` branch to get the dependencies updated
 on the CI/CD system.
@@ -246,4 +246,4 @@ merge the PR to keep updated with the template.
 ## Links
 
 See
-[the example generated repo](https://github.com/whoopnip/pypi-sphinx-quickstart)
+[the example generated repo](https://github.com/nickderobertis/pypi-sphinx-quickstart)
