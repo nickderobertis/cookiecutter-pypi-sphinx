@@ -57,13 +57,13 @@ username and password. See [Setup MongoDB](#setup-mongodb-optional-for-todo-inte
 ### `conf.py`
 
 Edit `conf.py` in the main repo directory. This contains the main
-settings for the PyPi package. Fill out each setting with the
-details about your package.
+settings for the PyPi package. The settings should be mostly filled out
+from using `cruft`, but specific package details such as dependencies
+still need to be added.
 
 ### Adding Project Source
 
-Delete the folder `py_qs_example`, and add your own package
-with the name you set in `conf.PACKAGE_NAME`.
+Add your project code to the folder named by `PACKAGE_NAME`.
 
 ### Adding Global Requirements to Build
 
@@ -79,12 +79,7 @@ pipenv update
 
 ### Setting up Documentation
 
-Edit `docsrc/Makefile` to change `SPHINXPROJ` to set it to the name
-you set in `conf.PACKAGE_NAME`.
-
-Edit `docsrc/source/index.rst` to remove the example included files. Replace
-with your own if you wish or entirely delete the My Module and
-My Package sections if don't wish to use the autosummary directive.
+Edit `docsrc/source/index.rst` to add some information about your package.
 
 Edit `docsrc/source/tutorial.rst` to put your own tutorial, or remove it
 and remove it from the `toctree` directive in `docsrc/source/index.rst`.
@@ -98,6 +93,21 @@ in the `examples` folder. You can also add Jupyter notebook examples in the
 Sphinx Gallery-style examples and included with `examples` in the
 build of the documentation.
 
+### Adding Labels
+
+The following labels are used in the CI/CD. They should be added in Labels in the
+repo settings:
+- `no auto merge`: added to prevent automatic merging of
+pull requests by maintainers
+- `maintenance`: one of the output categories for release notes
+- `automated pr`: Used by automated template update cron workflow which
+uses `cruft` to check for changes in the template and opens a PR
+automatically if so.
+- `automated issue`: Due to limitations in Github Actions, the template update
+cron workflow is not able to commit to the repo if the changes include changes to
+workflow files. It instead raises an issue to update the template in this case. This
+label is applied to these issues as well as the `maintenance` label.
+
 ### Commit and Push
 
 After the preceding steps, now commit your changes and push to `master`
@@ -105,6 +115,10 @@ if not done already. After a few minutes, Github Actions should create
 a `gh-pages` branch which has the documentation HTML in it.
 
 ### Github Pages Setup
+
+Note: This should happen automatically after Github Actions creates
+the `gh-pages` branch. But follow these steps if your docs still do
+not work.
 
 Go to repo settings, Github Pages section. For the Source dropdown,
 select "gh-pages branch". The settings page should reload,
@@ -119,20 +133,6 @@ and select "gh-pages branch" as described.
 
 ### Optional Steps
 
-#### Adding Labels
-
-The following labels are used in the CI/CD. They should be added in Labels in the
-repo settings:
-- `no auto merge`: added to prevent automatic merging of
-pull requests by maintainers
-- `maintenance`: one of the output categories for release notes
-- `automated pr`: Used by automated template update cron workflow which
-uses `cruft` to check for changes in the template and opens a PR
-automatically if so.
-- `automated issue`: Due to limitations in Github Actions, the template update
-cron workflow is not able to commit to the repo if the changes include changes to
-workflow files. It instead raises an issue to update the template in this case. This
-label is applied to these issues as well as the `maintenance` label.
 
 #### Set Master to Protected Branch
 
