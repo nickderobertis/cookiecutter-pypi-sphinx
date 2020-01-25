@@ -25,7 +25,11 @@ import {{ cookiecutter.package_name }}
 
 ## Links
 
-See the 
+See the
 [documentation here.](
 https://{{ cookiecutter.repo_username }}.github.io/{{ cookiecutter.repo_name }}/
 )
+
+## Author
+
+Created by {{ cookiecutter.package_author }}. MIT License.
