@@ -33,7 +33,7 @@ This is a simple example:
 
 .. code:: python
 
-    import {{ cookiecutter.package_name }}
+    import {{ cookiecutter.package_directory }}
 
 
 .. toctree:: api/modules

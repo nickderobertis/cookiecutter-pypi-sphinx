@@ -1,5 +1,6 @@
 {
-  "package_name": "py_qs_example",
+  "package_name": "py-qs-example",
+  "package_directory": "py_qs_example",
   "full_name": "Quick Start Example",
   "repo_name": "pypi-sphinx-quickstart",
   "repo_username": "nickderobertis",
