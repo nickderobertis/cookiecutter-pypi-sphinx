@@ -15,6 +15,6 @@ Some highlighted functionality.
 
 This is a simple example::
 
-    import {{ cookiecutter.package_name }}
+    import {{ cookiecutter.package_directory }}
 
 

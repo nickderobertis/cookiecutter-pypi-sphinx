@@ -18,9 +18,9 @@ pip install {{ cookiecutter.package_name }}
 A simple example:
 
 ```python
-import {{ cookiecutter.package_name }}
+import {{ cookiecutter.package_directory }}
 
-# Do something with {{ cookiecutter.package_name }}
+# Do something with {{ cookiecutter.package_directory }}
 ```
 
 ## Links
