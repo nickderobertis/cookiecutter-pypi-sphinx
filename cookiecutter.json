@@ -7,5 +7,6 @@
   "short_description": "Python package PyPi Sphinx quickstart example app",
   "package_author": "Nick DeRobertis",
   "author_email": "whoopnip@gmail.com",
-  "google_analytics_id": ""
+  "google_analytics_id": "",
+  "logo_url": ""
 }

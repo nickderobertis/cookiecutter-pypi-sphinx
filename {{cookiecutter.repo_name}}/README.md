@@ -1,7 +1,7 @@
 
 [![](https://codecov.io/gh/{{ cookiecutter.repo_username }}/{{ cookiecutter.repo_name }}/branch/master/graph/badge.svg)](https://codecov.io/gh/{{ cookiecutter.repo_username }}/{{ cookiecutter.repo_name }})
 
-# {{ cookiecutter.repo_name }}
+# {% if cookiecutter.logo_url %}<img src="{{ cookiecutter.logo_url }}" height="27px" align="left"></img>{% endif %} {{ cookiecutter.repo_name }}
 
 ## Overview
 
