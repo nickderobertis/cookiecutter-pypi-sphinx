@@ -11,7 +11,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        python-version: [3.7]
+        python-version: [3.8]
 
     steps:
     - name: Exit Workflow if PR but not Merged
@@ -39,7 +39,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        python-version: [3.7]
+        python-version: [3.8]
     steps:
       - uses: actions/checkout@v1
       - name: Collect TODO
