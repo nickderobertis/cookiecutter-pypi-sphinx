@@ -1,8 +1,33 @@
 from typing import Sequence
-
-from hooks.ext_subprocess import run_and_stream_output, run_and_get_output
+import shlex
+import subprocess
 
 PACKAGES = "{{ cookiecutter.install_packages }}".split(",")
+
+
+def stream_process(process):
+    go = process.poll() is None
+    for line in process.stdout:
+        print(line.decode("utf8"), end="")
+    return go
+
+
+def run_and_stream_output(command: str):
+    process = subprocess.Popen(
+        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+    )
+    while stream_process(process):
+        pass
+
+
+def run_and_get_output(command: str) -> str:
+    output = subprocess.run(
+        shlex.split(command),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=True,
+    )
+    return output.stdout.decode("utf8")
 
 
 def is_existing_pipenv_project() -> bool:
