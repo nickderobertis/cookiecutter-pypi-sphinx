@@ -20,13 +20,14 @@ the following features:
     - Notebook-style examples with Sphinx Gallery complete with download and Binder links
         - Auto-converts Jupyter notebooks in `nbexamples`
 - Auto-merges pull requests by maintainers
-- Auto-drafts release notes based on merged pull requests
+- Automatically creates release notes based on merged pull requests
+once a commit is done to master with the version changed in `conf.py`
 - Syncs new changes from the cookiecutter template using `cruft`
 on a cron workflow. Creates a PR with the changes to be merged
 manually. Creates an issue if it is not possible to commit the changes (when there are
 changes to workflow files).
-- Collects TODO comments and converts them into issues (optional)
-- Closes TODO issues once comments are removed (optional)
+- Collects TODO comments and converts them into issues
+- Closes TODO issues once comments are removed
 
 ## Getting Started
 
@@ -51,8 +52,6 @@ Go into the repo settings, under Secrets, and add the following secrets:
 - `pypi_password`: Personal token for PyPI
 - `gh_token`: Github personal access token
 - `CODECOV_TOKEN` (optional): [codecov.io](https://codecov.io) token for this project
-- `TODO_ACTIONS_MONGO_URL` (optional): MongoDB connection url, complete with
-username and password. See [Setup MongoDB](#setup-mongodb-optional-for-todo-integration).
 
 ### `conf.py`
 
@@ -145,15 +144,6 @@ Go to [codecov.io](https://codecov.io), log in via Github, click Repositories th
 "Add new repository" and select this repository from the list. Copy the
 token for Codecov to use in the next step.
 
-#### Setup MongoDB (optional, for TODO integration)
-
-For the TODO integration to work, you need a MongoDB instance. You can
-get one for free at [mlab.com](https://mlab.com). After creating the database,
-create a database user. The MLab interface will show you the format
-of the connection url string, which you will fill in the database user's
-username and password and use that as the `TODO_ACTIONS_MONGO_URL` secret,
-as the [Adding Secrets](#adding-secrets) section shows.
-
 ## Built-in CI/CD
 
 ### On Every Push
@@ -185,6 +175,8 @@ all the steps in On Every Push and When Branch is `master`, then it will:
 - Push to `gh-pages` branch, which will update the hosted documentation
 - Build Python package
 - Upload Python package to PyPI
+- Create a Github release pointing to any merged pull requests since 
+the last version bump
 
 ### If a Pull Request is Opened
 The CI/CD system will check whether the pull request was opened by a maintainer
@@ -198,11 +190,6 @@ Once everything is set up, just commit your changes. The built-in
 CI/CD will take care of testing, build, and deployment of PyPI package
 and documentation. If you use pull requests on Github then it will
 show you whether it passes the CI tests.
-
-### Releases
-
-If you want to create Github releases notes for your package, they
-will already be drafted, just edit them as desired before posting.
 
 ## Local Usage
 
