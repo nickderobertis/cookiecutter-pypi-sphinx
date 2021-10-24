@@ -2,7 +2,6 @@ name: automerge
 on:
   pull_request:
     types:
-      - labeled
       - unlabeled
       - synchronize
       - opened
@@ -60,21 +59,11 @@ jobs:
   collectTODO:
     needs: automerge
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 1
-      matrix:
-        python-version: [3.8]
     steps:
-      - uses: actions/checkout@v1
-        with:
-          ref: refs/heads/master
-      - name: Collect TODO
-        uses: nickderobertis/todo-actions@input-commit-branch
-        with:
-          commitBranch: master
-        env:
-          GITHUB_TOKEN: ${{ secrets.gh_token }}
-          TODO_ACTIONS_MONGO_URL: ${{ secrets.TODO_ACTIONS_MONGO_URL }}
+      - uses: "actions/checkout@master"
+      - name: "TODO to Issue"
+        uses: "nickderobertis/todo-to-issue-action@pr-support"
+        id: "todo"
 
   updateReleaseDraft:
     needs: automerge
