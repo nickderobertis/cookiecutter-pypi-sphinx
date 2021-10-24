@@ -22,5 +22,3 @@ mypy = "*"
 pypandoc = "*"
 cruft = "*"
 
-[requires]
-python_version = "3.8"
