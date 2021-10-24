@@ -92,10 +92,17 @@ in the `examples` folder. You can also add Jupyter notebook examples in the
 Sphinx Gallery-style examples and included with `examples` in the
 build of the documentation.
 
-### Adding Labels
+### Commit and Push
 
-The following labels are used in the CI/CD. They should be added in Labels in the
-repo settings:
+After the preceding steps, now commit your changes and push to `master`
+if not done already. After a few minutes, Github Actions should create
+a `gh-pages` branch which has the documentation HTML in it.
+
+### Check Labels
+
+The following labels are used in the CI/CD. They should have been added in Labels in the
+repo settings after the Github Actions from the first push have 
+finished running:
 - `no auto merge`: added to prevent automatic merging of
 pull requests by maintainers
 - `maintenance`: one of the output categories for release notes
@@ -106,12 +113,6 @@ automatically if so.
 cron workflow is not able to commit to the repo if the changes include changes to
 workflow files. It instead raises an issue to update the template in this case. This
 label is applied to these issues as well as the `maintenance` label.
-
-### Commit and Push
-
-After the preceding steps, now commit your changes and push to `master`
-if not done already. After a few minutes, Github Actions should create
-a `gh-pages` branch which has the documentation HTML in it.
 
 ### Github Pages Setup
 
