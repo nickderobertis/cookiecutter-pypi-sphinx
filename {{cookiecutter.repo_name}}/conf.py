@@ -116,7 +116,7 @@ PACKAGE_LOGO_URL = "{{ cookiecutter.logo_url }}"
 
 # Does not affect anything about the current package. Simply used for tracking when this repo was created off
 # of the quickstart template, so it is easier to bring over new changes to the template.
-_TEMPLATE_VERSION_TUPLE = (0, 8, 0)
+_TEMPLATE_VERSION_TUPLE = (0, 9, 0)
 
 if __name__ == '__main__':
     # Store config as environment variables
