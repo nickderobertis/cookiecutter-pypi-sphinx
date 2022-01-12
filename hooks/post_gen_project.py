@@ -20,18 +20,18 @@ def run_and_stream_output(command: str):
         pass
 
 
-def run_and_get_output(command: str) -> str:
+def run_and_get_output(command: str, check: bool = True) -> str:
     output = subprocess.run(
         shlex.split(command),
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
-        check=True,
+        check=check,
     )
     return output.stdout.decode("utf8")
 
 
 def is_existing_pipenv_project() -> bool:
-    pipenv_py_output = run_and_get_output("pipenv --py")
+    pipenv_py_output = run_and_get_output("pipenv --py", check=False)
     return not ("No virtualenv" in pipenv_py_output)
 
 
